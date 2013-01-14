@@ -1,0 +1,14 @@
+require 'spec_helper'
+
+describe "Author pages" do
+
+  subject { page }
+
+  describe "signup page" do
+    let(:author) { FactoryGirl.create(:author) }
+    before { visit signup_path(author) }
+
+    it { should have_selector('h1',    text: author.lastname) }
+    it { should have_selector('title', text: author.lastname) }
+  end
+end
